@@ -9,6 +9,9 @@ function Starwars(props) {
     const response = await fetch(`https://swapi.dev/api/people/${searchVal}/`)
     const responseJSON = await response.json()
 
+    const homeworld = await fetch(responseJSON.homeworld)
+    responseJSON.homeworld = await homeworld.json()
+
     props.setSearchResult(responseJSON)
   }
 
