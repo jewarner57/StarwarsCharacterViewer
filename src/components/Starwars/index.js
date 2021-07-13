@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './style.css';
 
-function Starwars() {
+function Starwars(props) {
 
   const [searchVal, setSearchVal] = useState(1)
 
@@ -9,7 +9,7 @@ function Starwars() {
     const response = await fetch(`https://swapi.dev/api/people/${searchVal}/`)
     const responseJSON = await response.json()
 
-    console.log(responseJSON)
+    props.setSearchResult(responseJSON)
   }
 
   const handleInputChange = (e) => {
