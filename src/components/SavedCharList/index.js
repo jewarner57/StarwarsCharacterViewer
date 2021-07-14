@@ -6,10 +6,10 @@ function SearchResult(props) {
 
   return (
     <div>
-      {savedCharacters.length > 0 ? <h3>Saved Characters: </h3> : ''}
-      {savedCharacters.map((obj) => {
+      {savedCharacters.length > 0 ? <h3 className="savedCharTitle">Saved Characters: </h3> : ''}
+      {savedCharacters.map((obj, index) => {
         return (
-          <div>
+          <div key={index}>
             <h3>{obj.name}</h3>
             <p>Height: {obj.height}</p>
             <p>Mass: {obj.mass}</p>
@@ -21,6 +21,11 @@ function SearchResult(props) {
             <p>Diameter: {obj.homeworld.diameter}</p>
             <p>Orbital Period: {obj.homeworld.orbital_period}</p>
             <p>Population: {obj.homeworld.population}</p>
+
+            <h4>Films:</h4>
+            {obj.films.map((film, index) => {
+              return <p key={index}>{film.title}</p>
+            })}
 
             <hr />
           </div>

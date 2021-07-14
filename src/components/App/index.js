@@ -17,12 +17,15 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <Title />
         <div className="AppMain">
-          <Title />
-          <Starwars setSearchResult={setSearchResult} />
-          <SearchResult data={searchResult} />
+          <div className="AppForm">
+            <Starwars setSearchResult={setSearchResult} />
+            <SearchResult data={searchResult} />
+          </div>
+          <SavedCharList />
         </div>
-        <SavedCharList />
+
       </div>
     </Provider>
   );

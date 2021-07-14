@@ -12,6 +12,11 @@ function Starwars(props) {
     const homeworld = await fetch(responseJSON.homeworld)
     responseJSON.homeworld = await homeworld.json()
 
+    const filmsRes = await Promise.all(responseJSON.films.map(film => fetch(film)))
+    responseJSON.films = await Promise.all(filmsRes.map(res => res.json()))
+
+    console.log(responseJSON.films)
+
     props.setSearchResult(responseJSON)
   }
 
